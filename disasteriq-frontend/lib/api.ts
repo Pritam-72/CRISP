@@ -11,9 +11,7 @@ const api = axios.create({ baseURL: API_BASE });
 
 api.interceptors.request.use((config) => {
     const token = getToken();
-    if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
-    }
+    if (token) config.headers.Authorization = `Bearer ${token}`;
     return config;
 });
 
@@ -28,7 +26,7 @@ api.interceptors.response.use(
     }
 );
 
-// ─── Weather ─────────────────────────────────────────────────────────────────
+// ─── Weather ──────────────────────────────────────────────────────────────────
 export const weatherApi = {
     getAll: () => api.get('/weather/all').then(r => r.data),
     getCurrent: (id: number) => api.get(`/weather/current/${id}`).then(r => r.data),
@@ -41,16 +39,17 @@ export const riskApi = {
     getDistrict: (id: number) => api.get(`/risk/district/${id}`).then(r => r.data),
     predict: () => api.post('/risk/predict').then(r => r.data),
     getForecast: (id: number) => api.get(`/risk/forecast/${id}`).then(r => r.data),
+    autoAlert: () => api.post('/risk/auto-alert').then(r => r.data),
 };
 
-// ─── Relief ──────────────────────────────────────────────────────────────────
+// ─── Relief ───────────────────────────────────────────────────────────────────
 export const reliefApi = {
     getResources: () => api.get('/relief/resources').then(r => r.data),
     getAllocations: () => api.get('/relief/allocations').then(r => r.data),
     optimize: (scenario?: string) => api.post('/relief/optimize', { scenario }).then(r => r.data),
 };
 
-// ─── Alerts ──────────────────────────────────────────────────────────────────
+// ─── Alerts ───────────────────────────────────────────────────────────────────
 export const alertsApi = {
     getHistory: (districtId?: number) =>
         api.get('/alerts/history', districtId ? { params: { district_id: districtId } } : {}).then(r => r.data),
@@ -59,7 +58,7 @@ export const alertsApi = {
     acknowledge: (id: number) => api.patch(`/alerts/${id}/acknowledge`).then(r => r.data),
 };
 
-// ─── Reports ─────────────────────────────────────────────────────────────────
+// ─── Reports ──────────────────────────────────────────────────────────────────
 export const reportsApi = {
     generate: (districtId: number) => api.post(`/reports/generate/${districtId}`).then(r => r.data),
     getHistory: () => api.get('/reports/history').then(r => r.data),
@@ -69,5 +68,34 @@ export const reportsApi = {
 export const authApi = {
     me: () => api.get('/auth/me').then(r => r.data),
 };
+
+// ─── Chat ─────────────────────────────────────────────────────────────────────
+export const chatApi = {
+    query: (message: string, districts: any[]) =>
+        api.post('/chat/query', { message, districts }).then(r => r.data),
+};
+
+// ─── CSV Export helpers ───────────────────────────────────────────────────────
+export function exportToCSV(filename: string, rows: Record<string, any>[]) {
+    if (!rows.length) return;
+    const headers = Object.keys(rows[0]);
+    const csvContent = [
+        headers.join(','),
+        ...rows.map(row =>
+            headers.map(h => {
+                const v = row[h] ?? '';
+                return typeof v === 'string' && v.includes(',') ? `"${v}"` : v;
+            }).join(',')
+        ),
+    ].join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `${filename}_${new Date().toISOString().slice(0, 10)}.csv`;
+    link.click();
+    URL.revokeObjectURL(url);
+}
 
 export default api;

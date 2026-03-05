@@ -2,9 +2,28 @@
 
 import { useEffect, useState } from 'react';
 import { useStore } from '@/lib/store';
-import { riskApi } from '@/lib/api';
-import { X, Users, ChevronRight } from 'lucide-react';
+import { riskApi, exportToCSV } from '@/lib/api';
+import { X, Users, ChevronRight, Download } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+
+/* ── Mini SVG sparkline ── */
+function Sparkline({ values, color }: { values: number[]; color: string }) {
+    if (!values.length || values.length < 2) return null;
+    const W = 44, H = 18;
+    const min = Math.min(...values);
+    const max = Math.max(...values) || 1;
+    const pts = values.map((v, i) => {
+        const x = (i / (values.length - 1)) * W;
+        const y = H - ((v - min) / (max - min || 1)) * H;
+        return `${x},${y}`;
+    }).join(' ');
+    return (
+        <svg width={W} height={H} style={{ flexShrink: 0 }}>
+            <polyline points={pts} fill="none" stroke={color} strokeWidth="1.2" strokeLinejoin="round" strokeLinecap="round" opacity="0.7" />
+            <circle cx={pts.split(' ').at(-1)?.split(',')[0]} cy={pts.split(' ').at(-1)?.split(',')[1]} r="1.5" fill={color} />
+        </svg>
+    );
+}
 
 const S = {
     label: { fontSize: 9, fontFamily: "'JetBrains Mono', monospace", letterSpacing: '0.12em', color: '#444', textTransform: 'uppercase' as const },
@@ -71,11 +90,25 @@ export default function RiskInsightPanel() {
 
     /* ── Default: top-risk list ── */
     if (!selectedDistrict) {
+        const csvExport = () => exportToCSV('crisp_risk', districts.map(d => ({
+            district: d.name, state: d.state,
+            composite: d.composite_risk.toFixed(3),
+            flood: d.flood_risk.toFixed(3),
+            cyclone: d.cyclone_risk.toFixed(3),
+            heatwave: d.heatwave_risk.toFixed(3),
+            people_at_risk: d.people_at_risk,
+        })));
+
         return (
             <div style={{ padding: 16 }}>
-                <div style={{ marginBottom: 14 }}>
-                    <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, fontWeight: 600, color: '#f0f0f0' }}>Risk Intelligence</div>
-                    <div style={{ ...S.label, marginTop: 2 }}>Click a district on the map for details</div>
+                <div style={{ marginBottom: 14, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                    <div>
+                        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, fontWeight: 600, color: '#f0f0f0' }}>Risk Intelligence</div>
+                        <div style={{ ...S.label, marginTop: 2 }}>Click a district on the map for details</div>
+                    </div>
+                    <button onClick={csvExport} style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: '#00d4ff', background: 'rgba(0,212,255,0.06)', border: '1px solid rgba(0,212,255,0.2)', padding: '5px 10px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 5, letterSpacing: '0.08em' }}>
+                        <Download size={10} /> CSV
+                    </button>
                 </div>
 
                 <div style={S.heading}>// Highest Risk — Live</div>
@@ -107,18 +140,18 @@ export default function RiskInsightPanel() {
                                     (e.currentTarget as HTMLButtonElement).style.background = 'transparent';
                                 }}
                             >
-                                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: '#2a2a2a', width: 16 }}>{String(i + 1).padStart(2, '0')}</span>
-                                    <div>
-                                        <div style={{ fontSize: 12, color: '#c0c0c0' }}>{d.name}</div>
-                                        <div style={{ fontSize: 10, color: '#444' }}>{d.state}</div>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: 8, flex: 1, minWidth: 0 }}>
+                                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: '#2a2a2a', width: 16, flexShrink: 0 }}>{String(i + 1).padStart(2, '0')}</span>
+                                    <div style={{ minWidth: 0, flex: 1 }}>
+                                        <div style={{ fontSize: 12, color: '#c0c0c0', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{d.name}</div>
+                                        <div style={{ fontSize: 9, color: '#444', fontFamily: "'JetBrains Mono', monospace" }}>{d.state}</div>
                                     </div>
                                 </div>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, fontWeight: 700, color: riskColor(d.composite_risk) }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
+                                    <Sparkline values={[d.flood_risk, d.heatwave_risk, d.cyclone_risk, d.composite_risk, d.composite_risk]} color={riskColor(d.composite_risk)} />
+                                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, fontWeight: 700, color: riskColor(d.composite_risk), minWidth: 38, textAlign: 'right' }}>
                                         {Math.round(d.composite_risk * 100)}%
                                     </span>
-                                    <ChevronRight size={11} color="#333" />
                                 </div>
                             </button>
                         ))}

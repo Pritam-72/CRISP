@@ -55,11 +55,14 @@ export interface Allocation {
     composite_risk: number;
 }
 
+export type SidebarTab = 'risk' | 'relief' | 'alerts' | 'reports' | 'stats' | 'chat' | 'compare';
+
 interface AppState {
     // Auth
     token: string | null;
     role: string | null;
-    setAuth: (token: string, role: string) => void;
+    email: string | null;
+    setAuth: (token: string, role: string, email?: string) => void;
     logout: () => void;
 
     // Districts
@@ -79,22 +82,26 @@ interface AppState {
     setLastOptimization: (v: any) => void;
 
     // Sidebar
-    sidebarTab: 'risk' | 'relief' | 'alerts' | 'reports';
-    setSidebarTab: (t: 'risk' | 'relief' | 'alerts' | 'reports') => void;
+    sidebarTab: SidebarTab;
+    setSidebarTab: (t: SidebarTab) => void;
 }
 
 export const useStore = create<AppState>((set) => ({
     token: typeof window !== 'undefined' ? localStorage.getItem('disasteriq_token') : null,
     role: typeof window !== 'undefined' ? localStorage.getItem('disasteriq_role') : null,
-    setAuth: (token, role) => {
+    email: typeof window !== 'undefined' ? localStorage.getItem('disasteriq_email') : null,
+
+    setAuth: (token, role, email) => {
         localStorage.setItem('disasteriq_token', token);
         localStorage.setItem('disasteriq_role', role);
-        set({ token, role });
+        if (email) localStorage.setItem('disasteriq_email', email);
+        set({ token, role, email: email || null });
     },
     logout: () => {
         localStorage.removeItem('disasteriq_token');
         localStorage.removeItem('disasteriq_role');
-        set({ token: null, role: null });
+        localStorage.removeItem('disasteriq_email');
+        set({ token: null, role: null, email: null });
     },
 
     districts: [],
