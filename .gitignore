@@ -1,0 +1,40 @@
+# ── Python ───────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.venv/
+venv/
+env/
+*.log
+
+# ── Secrets & databases ───────────────────────
+disasteriq-backend/.env
+disasteriq-backend/*.db
+disasteriq-backend/*.sqlite
+disasteriq-backend/*.sqlite3
+*.db
+
+# ── Node / Next.js ───────────────────────────
+node_modules/
+disasteriq-frontend/.next/
+disasteriq-frontend/out/
+disasteriq-frontend/.env.local
+disasteriq-frontend/*.env.local
+
+# ── OS ───────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDEs ─────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo

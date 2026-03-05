@@ -1,0 +1,422 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════
+   CRISP — Black Techy Design System
+   ═══════════════════════════════════════════ */
+
+:root {
+  --bg-base: #000000;
+  --bg-surface: #0a0a0a;
+  --bg-elevated: #111111;
+  --bg-hover: #181818;
+  --bg-active: #1a1a1a;
+
+  --border: rgba(255, 255, 255, 0.06);
+  --border-bright: rgba(255, 255, 255, 0.12);
+
+  --accent: #00d4ff;
+  /* cyan — primary techy */
+  --accent-dim: rgba(0, 212, 255, 0.08);
+  --accent-glow: rgba(0, 212, 255, 0.2);
+
+  --danger: #ff3b3b;
+  --danger-dim: rgba(255, 59, 59, 0.1);
+  --warning: #ffaa00;
+  --warning-dim: rgba(255, 170, 0, 0.1);
+  --success: #00e676;
+  --success-dim: rgba(0, 230, 118, 0.08);
+
+  --text-primary: #f0f0f0;
+  --text-secondary: #888888;
+  --text-muted: #444444;
+
+  --font-mono: 'JetBrains Mono', 'Fira Mono', monospace;
+  --font-ui: 'Inter', -apple-system, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-ui);
+}
+
+body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Grid background texture ─────────────────────────────── */
+.grid-bg {
+  background-color: var(--bg-base);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Subtle corner vignette on grid */
+.grid-bg::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(0, 0, 0, 0.7) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Panel / card surface ────────────────────────────────── */
+.panel {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+}
+
+.panel-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.panel-card:hover {
+  border-color: var(--border-bright);
+  background: var(--bg-hover);
+}
+
+/* ── Cyber accent glow card ──────────────────────────────── */
+.cyber-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  position: relative;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.cyber-card:hover {
+  border-color: rgba(0, 212, 255, 0.3);
+  box-shadow: 0 0 16px rgba(0, 212, 255, 0.08), inset 0 0 16px rgba(0, 212, 255, 0.02);
+}
+
+/* ── Navbar ──────────────────────────────────────────────── */
+.nav-bar {
+  background: rgba(0, 0, 0, 0.95);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+}
+
+/* ── Sidebar ─────────────────────────────────────────────── */
+.sidebar {
+  width: 320px;
+  min-width: 320px;
+  background: var(--bg-surface);
+  border-left: 1px solid var(--border);
+  overflow-y: auto;
+}
+
+/* ── Inputs ──────────────────────────────────────────────── */
+.input-cyber {
+  background: var(--bg-base);
+  border: 1px solid var(--border-bright);
+  border-radius: 3px;
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.input-cyber:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.12);
+}
+
+.input-cyber::placeholder {
+  color: var(--text-muted);
+}
+
+/* ── Buttons ─────────────────────────────────────────────── */
+.btn-primary {
+  background: var(--accent);
+  color: #000;
+  font-weight: 600;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: opacity 0.15s, box-shadow 0.15s;
+  letter-spacing: 0.02em;
+}
+
+.btn-primary:hover:not(:disabled) {
+  opacity: 0.9;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.35);
+}
+
+.btn-primary:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border-bright);
+  color: var(--text-secondary);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.btn-danger {
+  background: var(--danger-dim);
+  border: 1px solid rgba(255, 59, 59, 0.3);
+  color: var(--danger);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.15s, box-shadow 0.15s;
+}
+
+.btn-danger:hover {
+  background: rgba(255, 59, 59, 0.2);
+  box-shadow: 0 0 12px rgba(255, 59, 59, 0.25);
+}
+
+/* ── Risk bars ───────────────────────────────────────────── */
+.risk-bar {
+  height: 3px;
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.risk-bar-fill {
+  height: 100%;
+  border-radius: 0;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Risk level colors ───────────────────────────────────── */
+.risk-low {
+  color: var(--success);
+}
+
+.risk-medium {
+  color: var(--warning);
+}
+
+.risk-high {
+  color: #ff6b00;
+}
+
+.risk-critical {
+  color: var(--danger);
+  animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* ── Live dot ────────────────────────────────────────────── */
+.live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 8px var(--success);
+  animation: live-pulse 2s ease-in-out infinite;
+}
+
+@keyframes live-pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 4px var(--success);
+  }
+
+  50% {
+    box-shadow: 0 0 12px var(--success), 0 0 24px rgba(0, 230, 118, 0.3);
+  }
+}
+
+/* ── Mono data values ────────────────────────────────────── */
+.mono {
+  font-family: var(--font-mono);
+}
+
+/* ── Section label ───────────────────────────────────────── */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ── Tag / badge ─────────────────────────────────────────── */
+.tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  padding: 2px 7px;
+  border-radius: 2px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.tag-cyan {
+  background: rgba(0, 212, 255, 0.12);
+  color: var(--accent);
+  border: 1px solid rgba(0, 212, 255, 0.25);
+}
+
+.tag-red {
+  background: rgba(255, 59, 59, 0.12);
+  color: var(--danger);
+  border: 1px solid rgba(255, 59, 59, 0.25);
+}
+
+.tag-yellow {
+  background: rgba(255, 170, 0, 0.12);
+  color: var(--warning);
+  border: 1px solid rgba(255, 170, 0, 0.25);
+}
+
+.tag-green {
+  background: rgba(0, 230, 118, 0.10);
+  color: var(--success);
+  border: 1px solid rgba(0, 230, 118, 0.2);
+}
+
+.tag-purple {
+  background: rgba(167, 139, 250, 0.1);
+  color: #a78bfa;
+  border: 1px solid rgba(167, 139, 250, 0.2);
+}
+
+/* ── Divider ─────────────────────────────────────────────── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+/* ── Scrollbar ───────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ── Animations ──────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeInUp 0.2s ease forwards;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin {
+  animation: spin 0.8s linear infinite;
+}
+
+/* ── Map container ───────────────────────────────────────── */
+.map-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    min-width: 100%;
+  }
+}
+
+/* ── Tab nav ─────────────────────────────────────────────── */
+.tab-active {
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent);
+  background: rgba(0, 212, 255, 0.04);
+}
+
+.tab-inactive {
+  color: var(--text-muted);
+  border-bottom: 1px solid transparent;
+}
+
+.tab-inactive:hover {
+  color: var(--text-secondary);
+}
+
+/* ── Tooltip override for recharts ──────────────────────── */
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  background: #111 !important;
+  border: 1px solid var(--border-bright) !important;
+  border-radius: 4px !important;
+  font-size: 11px !important;
+  font-family: var(--font-mono) !important;
+}
+
+/* gradient-bg alias for compat */
+.gradient-bg {
+  background: var(--bg-base);
+}
+
+/* glass alias — now just panel surface */
+.glass {
+  background: rgba(0, 0, 0, 0.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+.glass-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
