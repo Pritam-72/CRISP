@@ -1,0 +1,732 @@
+{
+    "type": "FeatureCollection",
+    "name": "india_key_districts",
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        }
+    },
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "district_id": 1,
+                "NAME_2": "Kutch",
+                "NAME_1": "Gujarat",
+                "ID_2": 1
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            68.9,
+                            23.3
+                        ],
+                        [
+                            70.6,
+                            23.3
+                        ],
+                        [
+                            70.6,
+                            24.1
+                        ],
+                        [
+                            68.9,
+                            24.1
+                        ],
+                        [
+                            68.9,
+                            23.3
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "district_id": 2,
+                "NAME_2": "Puri",
+                "NAME_1": "Odisha",
+                "ID_2": 2
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            85.3,
+                            19.5
+                        ],
+                        [
+                            86.2,
+                            19.5
+                        ],
+                        [
+                            86.2,
+                            20.2
+                        ],
+                        [
+                            85.3,
+                            20.2
+                        ],
+                        [
+                            85.3,
+                            19.5
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "district_id": 3,
+                "NAME_2": "Patna",
+                "NAME_1": "Bihar",
+                "ID_2": 3
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            85.0,
+                            25.3
+                        ],
+                        [
+                            85.5,
+                            25.3
+                        ],
+                        [
+                            85.5,
+                            25.8
+                        ],
+                        [
+                            85.0,
+                            25.8
+                        ],
+                        [
+                            85.0,
+                            25.3
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "district_id": 4,
+                "NAME_2": "Ernakulam",
+                "NAME_1": "Kerala",
+                "ID_2": 4
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            76.1,
+                            9.7
+                        ],
+                        [
+                            76.7,
+                            9.7
+                        ],
+                        [
+                            76.7,
+                            10.2
+                        ],
+                        [
+                            76.1,
+                            10.2
+                        ],
+                        [
+                            76.1,
+                            9.7
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "district_id": 5,
+                "NAME_2": "Nashik",
+                "NAME_1": "Maharashtra",
+                "ID_2": 5
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            73.5,
+                            19.7
+                        ],
+                        [
+                            74.3,
+                            19.7
+                        ],
+                        [
+                            74.3,
+                            20.4
+                        ],
+                        [
+                            73.5,
+                            20.4
+                        ],
+                        [
+                            73.5,
+                            19.7
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "district_id": 6,
+                "NAME_2": "Kamrup",
+                "NAME_1": "Assam",
+                "ID_2": 6
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            91.2,
+                            25.8
+                        ],
+                        [
+                            92.0,
+                            25.8
+                        ],
+                        [
+                            92.0,
+                            26.4
+                        ],
+                        [
+                            91.2,
+                            26.4
+                        ],
+                        [
+                            91.2,
+                            25.8
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "district_id": 7,
+                "NAME_2": "Visakhapatnam",
+                "NAME_1": "Andhra Pradesh",
+                "ID_2": 7
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            83.0,
+                            17.4
+                        ],
+                        [
+                            83.7,
+                            17.4
+                        ],
+                        [
+                            83.7,
+                            18.1
+                        ],
+                        [
+                            83.0,
+                            18.1
+                        ],
+                        [
+                            83.0,
+                            17.4
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "district_id": 8,
+                "NAME_2": "Uttarkashi",
+                "NAME_1": "Uttarakhand",
+                "ID_2": 8
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            78.0,
+                            30.5
+                        ],
+                        [
+                            79.0,
+                            30.5
+                        ],
+                        [
+                            79.0,
+                            31.1
+                        ],
+                        [
+                            78.0,
+                            31.1
+                        ],
+                        [
+                            78.0,
+                            30.5
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "district_id": 9,
+                "NAME_2": "Mumbai",
+                "NAME_1": "Maharashtra",
+                "ID_2": 9
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            72.7,
+                            18.8
+                        ],
+                        [
+                            73.0,
+                            18.8
+                        ],
+                        [
+                            73.0,
+                            19.3
+                        ],
+                        [
+                            72.7,
+                            19.3
+                        ],
+                        [
+                            72.7,
+                            18.8
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "district_id": 10,
+                "NAME_2": "Jaisalmer",
+                "NAME_1": "Rajasthan",
+                "ID_2": 10
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            69.5,
+                            26.5
+                        ],
+                        [
+                            71.5,
+                            26.5
+                        ],
+                        [
+                            71.5,
+                            27.8
+                        ],
+                        [
+                            69.5,
+                            27.8
+                        ],
+                        [
+                            69.5,
+                            26.5
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "district_id": 11,
+                "NAME_2": "Chennai",
+                "NAME_1": "Tamil Nadu",
+                "ID_2": 11
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            80.1,
+                            12.9
+                        ],
+                        [
+                            80.4,
+                            12.9
+                        ],
+                        [
+                            80.4,
+                            13.3
+                        ],
+                        [
+                            80.1,
+                            13.3
+                        ],
+                        [
+                            80.1,
+                            12.9
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "district_id": 12,
+                "NAME_2": "Bhubaneswar",
+                "NAME_1": "Odisha",
+                "ID_2": 12
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            85.6,
+                            20.1
+                        ],
+                        [
+                            85.9,
+                            20.1
+                        ],
+                        [
+                            85.9,
+                            20.5
+                        ],
+                        [
+                            85.6,
+                            20.5
+                        ],
+                        [
+                            85.6,
+                            20.1
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "district_id": 13,
+                "NAME_2": "Srinagar",
+                "NAME_1": "Jammu & Kashmir",
+                "ID_2": 13
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            74.6,
+                            33.9
+                        ],
+                        [
+                            75.1,
+                            33.9
+                        ],
+                        [
+                            75.1,
+                            34.3
+                        ],
+                        [
+                            74.6,
+                            34.3
+                        ],
+                        [
+                            74.6,
+                            33.9
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "district_id": 14,
+                "NAME_2": "Bhopal",
+                "NAME_1": "Madhya Pradesh",
+                "ID_2": 14
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            77.2,
+                            23.0
+                        ],
+                        [
+                            77.7,
+                            23.0
+                        ],
+                        [
+                            77.7,
+                            23.5
+                        ],
+                        [
+                            77.2,
+                            23.5
+                        ],
+                        [
+                            77.2,
+                            23.0
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "district_id": 15,
+                "NAME_2": "Lucknow",
+                "NAME_1": "Uttar Pradesh",
+                "ID_2": 15
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            80.7,
+                            26.6
+                        ],
+                        [
+                            81.2,
+                            26.6
+                        ],
+                        [
+                            81.2,
+                            27.1
+                        ],
+                        [
+                            80.7,
+                            27.1
+                        ],
+                        [
+                            80.7,
+                            26.6
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "district_id": 16,
+                "NAME_2": "Hyderabad",
+                "NAME_1": "Telangana",
+                "ID_2": 16
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            78.2,
+                            17.2
+                        ],
+                        [
+                            78.7,
+                            17.2
+                        ],
+                        [
+                            78.7,
+                            17.6
+                        ],
+                        [
+                            78.2,
+                            17.6
+                        ],
+                        [
+                            78.2,
+                            17.2
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "district_id": 17,
+                "NAME_2": "Kolkata",
+                "NAME_1": "West Bengal",
+                "ID_2": 17
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            88.2,
+                            22.4
+                        ],
+                        [
+                            88.6,
+                            22.4
+                        ],
+                        [
+                            88.6,
+                            22.8
+                        ],
+                        [
+                            88.2,
+                            22.8
+                        ],
+                        [
+                            88.2,
+                            22.4
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "district_id": 18,
+                "NAME_2": "Pune",
+                "NAME_1": "Maharashtra",
+                "ID_2": 18
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            73.6,
+                            18.3
+                        ],
+                        [
+                            74.1,
+                            18.3
+                        ],
+                        [
+                            74.1,
+                            18.7
+                        ],
+                        [
+                            73.6,
+                            18.7
+                        ],
+                        [
+                            73.6,
+                            18.3
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "district_id": 19,
+                "NAME_2": "Guwahati",
+                "NAME_1": "Assam",
+                "ID_2": 19
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            91.5,
+                            26.0
+                        ],
+                        [
+                            91.9,
+                            26.0
+                        ],
+                        [
+                            91.9,
+                            26.4
+                        ],
+                        [
+                            91.5,
+                            26.4
+                        ],
+                        [
+                            91.5,
+                            26.0
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "district_id": 20,
+                "NAME_2": "Bengaluru",
+                "NAME_1": "Karnataka",
+                "ID_2": 20
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            77.4,
+                            12.8
+                        ],
+                        [
+                            77.8,
+                            12.8
+                        ],
+                        [
+                            77.8,
+                            13.2
+                        ],
+                        [
+                            77.4,
+                            13.2
+                        ],
+                        [
+                            77.4,
+                            12.8
+                        ]
+                    ]
+                ]
+            }
+        }
+    ]
+}

@@ -16,7 +16,6 @@ xgboost==2.0.3
 scikit-learn==1.4.0
 pandas==2.2.0
 numpy==1.26.3
-shap==0.44.1
 ortools==9.8.3296
 geopy==2.4.1
 twilio==8.12.0

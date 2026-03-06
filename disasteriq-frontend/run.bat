@@ -1,0 +1,3 @@
+@echo off
+echo Starting React Frontend...
+node "node_modules\next\dist\bin\next" dev
