@@ -49,9 +49,17 @@ function LeafletMap({ districts, onSelect }: {
     // Init Leaflet once
     useEffect(() => {
         if (mapRef.current || !containerRef.current) return;
+        // Guard against React Strict Mode double-invoke: container already has a Leaflet map
+        if ((containerRef.current as any)._leaflet_id) return;
+
+        let isMounted = true;
 
         // Dynamic import to avoid SSR
         import('leaflet').then(async (L) => {
+            // Bail if component unmounted or map already created or container re-used
+            if (!isMounted || !containerRef.current || mapRef.current) return;
+            if ((containerRef.current as any)._leaflet_id) return;
+
             leafletRef.current = L.default ?? L;
             const Lf = leafletRef.current;
 
@@ -90,6 +98,7 @@ function LeafletMap({ districts, onSelect }: {
         });
 
         return () => {
+            isMounted = false;
             if (mapRef.current) {
                 mapRef.current.remove();
                 mapRef.current = null;
