@@ -45,9 +45,14 @@ export default function DashboardPage() {
         setLoading,
     } = useStore();
 
+    const [mounted, setMounted] = useState(false);
     const [predicting, setPredicting] = useState(false);
     const [lastUpdate, setLastUpdate] = useState('');
     const [wsStatus, setWsStatus] = useState<'connecting' | 'connected' | 'disconnected'>('disconnected');
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     useEffect(() => {
         if (!token) { router.push('/auth/login'); return; }
@@ -91,8 +96,8 @@ export default function DashboardPage() {
 
     const wsColor = wsStatus === 'connected' ? '#00e676' : wsStatus === 'connecting' ? '#ffaa00' : '#333';
 
-    // Filter tabs by role
-    const tabs = ALL_TABS.filter(t => !t.roles || t.roles.includes(role || ''));
+    // Filter tabs by role (only after mounting to avoid hydration mismatch)
+    const tabs = mounted ? ALL_TABS.filter(t => !t.roles || t.roles.includes(role || '')) : ALL_TABS;
 
     // Ensure current tab is accessible; if not, reset
     const validTab = tabs.some(t => t.id === sidebarTab) ? sidebarTab : 'risk';
@@ -144,7 +149,7 @@ export default function DashboardPage() {
                 {/* Right: actions + role */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                     {/* Only admin/officer can run predictions */}
-                    {(role === 'admin' || role === 'officer') && (
+                    {mounted && (role === 'admin' || role === 'officer') && (
                         <button
                             onClick={runPrediction}
                             disabled={predicting}
@@ -156,9 +161,11 @@ export default function DashboardPage() {
                         </button>
                     )}
 
-                    <span className={ROLE_COLORS[role || ''] || 'tag tag-cyan'} style={{ marginLeft: 4 }}>
-                        {role}
-                    </span>
+                    {mounted && (
+                        <span className={ROLE_COLORS[role || ''] || 'tag tag-cyan'} style={{ marginLeft: 4 }}>
+                            {role}
+                        </span>
+                    )}
 
                     <button onClick={handleLogout} title="Logout" style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: '#333', padding: '4px', display: 'flex', alignItems: 'center', transition: 'color 0.15s' }}
                         onMouseEnter={e => (e.currentTarget.style.color = '#ff3b3b')}
